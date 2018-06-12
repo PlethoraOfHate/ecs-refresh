@@ -19,7 +19,7 @@ setup(name='ecs-refresh',
       author_email='stephen.mercier@gmail.com',
       license='Apache License 2.0',
       keywords=['ECS', 'AWS'],
-      packages=['ecs-refresh'],
+      packages=[],
       install_requires=[
         "click",
         "boto3",
