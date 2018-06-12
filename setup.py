@@ -8,7 +8,7 @@ setup(name='ecs-refresh',
       version='0.9',
       description='Small tool to kick off ECS blue/green deployments',
       classifiers=[
-        'Development Status :: 2 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python :: 3.5',
         'Topic :: System :: Systems Administration',
