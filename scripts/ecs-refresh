@@ -48,13 +48,27 @@ def deploy(cluster, service):
 
     response = get_current_task_definition(client, cluster, service)
     # We don't handle tasks with multiple containers for now.
-
-    with log_call("register task definition"):
-        response = client.register_task_definition(
-            family=response["taskDefinition"]["family"],
-            volumes=response["taskDefinition"]["volumes"],
-            containerDefinitions=response["taskDefinition"]["containerDefinitions"],
-        )
+    if ( "requiresCompatibilities" in response["taskDefinition"]):
+        if ( response["taskDefinition"]["requiresCompatibilities"][0] == "FARGATE" ):
+            with log_call("register task definition"):
+                response = client.register_task_definition(
+                    family=response["taskDefinition"]["family"],
+                    volumes=response["taskDefinition"]["volumes"],
+                    networkMode=response["taskDefinition"]["networkMode"],
+                    taskRoleArn=response["taskDefinition"]["taskRoleArn"],
+                    executionRoleArn=response["taskDefinition"]["executionRoleArn"],
+                    requiresCompatibilities=response["taskDefinition"]["requiresCompatibilities"],
+                    cpu=response["taskDefinition"]["cpu"],
+                    memory=response["taskDefinition"]["memory"],
+                    containerDefinitions=response["taskDefinition"]["containerDefinitions"],
+                )
+    else:
+        with log_call("register task definition"):
+            response = client.register_task_definition(
+                family=response["taskDefinition"]["family"],
+                volumes=response["taskDefinition"]["volumes"],
+                containerDefinitions=response["taskDefinition"]["containerDefinitions"],
+            )
     new_task_arn = response["taskDefinition"]["taskDefinitionArn"]
 
     with log_call("update task definition"):
