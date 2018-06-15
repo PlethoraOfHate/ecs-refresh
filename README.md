@@ -1,5 +1,6 @@
 # ecs-refresh
-Python tool for kicking off blue/green deploys on Amazon ECS
+Python tool for kicking off blue/green deploys on Amazon ECS 
+(Fargate support added 06.15.2018)
 
 # Usage
 
