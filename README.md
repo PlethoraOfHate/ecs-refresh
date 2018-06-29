@@ -27,6 +27,6 @@ Commands:
 
 To deploy a refresh of "MyService" on ECS Cluster "MyCluster" for example:
 ```
-user@host:/$ ecs-refresh deploy MyCluster MyService
+user@host:/$ ecs-refresh deploy --cluster MyCluster --service MyService
 ```
 
