@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='ecs-refresh',
-      version='0.99',
+      version='1.00',
       description='Small tool to kick off ECS blue/green deployments',
       classifiers=[
         'Development Status :: 5 - Production/Stable',
