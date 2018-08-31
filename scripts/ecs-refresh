@@ -49,7 +49,7 @@ def deploy(cluster, service):
     response = get_current_task_definition(client, cluster, service)
     # We don't handle tasks with multiple containers for now.
     if ( "requiresCompatibilities" in response["taskDefinition"]):
-        if ( response["taskDefinition"]["requiresCompatibilities"][0] == "FARGATE" ):
+        if ( "FARGATE" in response["taskDefinition"]["requiresCompatibilities"] ):
             with log_call("register task definition"):
                 response = client.register_task_definition(
                     family=response["taskDefinition"]["family"],
