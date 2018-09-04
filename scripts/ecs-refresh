@@ -68,6 +68,7 @@ def deploy(cluster, service):
                     family=response["taskDefinition"]["family"],
                     volumes=response["taskDefinition"]["volumes"],
                     containerDefinitions=response["taskDefinition"]["containerDefinitions"],
+                    taskRoleArn=response["taskDefinition"]["taskRoleArn"],
                 )
     else:
         with log_call("register task definition"):
@@ -75,6 +76,7 @@ def deploy(cluster, service):
                 family=response["taskDefinition"]["family"],
                 volumes=response["taskDefinition"]["volumes"],
                 containerDefinitions=response["taskDefinition"]["containerDefinitions"],
+                taskRoleArn=response["taskDefinition"]["taskRoleArn"],
             )
     new_task_arn = response["taskDefinition"]["taskDefinitionArn"]
 
