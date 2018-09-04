@@ -62,6 +62,13 @@ def deploy(cluster, service):
                     memory=response["taskDefinition"]["memory"],
                     containerDefinitions=response["taskDefinition"]["containerDefinitions"],
                 )
+        else:
+            with log_call("register task definition"):
+                response = client.register_task_definition(
+                    family=response["taskDefinition"]["family"],
+                    volumes=response["taskDefinition"]["volumes"],
+                    containerDefinitions=response["taskDefinition"]["containerDefinitions"],
+                )
     else:
         with log_call("register task definition"):
             response = client.register_task_definition(
